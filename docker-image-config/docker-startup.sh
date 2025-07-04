@@ -25,4 +25,5 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 #########################################
 
 /etc/init.d/dnsmasq start
+[ -f /usr/sbin/nginx ] && nginx
 python2 switchedrelay.py

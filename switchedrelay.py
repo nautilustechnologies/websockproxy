@@ -23,7 +23,8 @@ from tornado import websocket
 
 
 FORMAT = '%(asctime)-15s %(message)s'
-RATE = 40980.0 #unit: bytes
+# RATE = 40980.0 #unit: bytes
+RATE = 4098000000.00 #unit: bytes
 BROADCAST = '%s%s%s%s%s%s' % (chr(0xff),chr(0xff),chr(0xff),chr(0xff),chr(0xff),chr(0xff))
 PING_INTERVAL = 30
 
