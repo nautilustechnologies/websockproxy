@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 as ubuntu-base
+FROM ubuntu:18.04 AS ubuntu-base
 # FROM debian:12
 
 ENV DEBIAN_FRONTEND=noninteractive 
