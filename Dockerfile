@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as ubuntu-base
 # FROM debian:12
 
 ENV DEBIAN_FRONTEND=noninteractive 
@@ -11,6 +11,9 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractiv apt-get clean
 
 RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && python get-pip.py && rm get-pip.py
+
+#############################
+FROM ubuntu-base
 
 COPY docker-image-config/docker-startup.sh switchedrelay.py limiter.py requirements.txt /opt/websockproxy/
 COPY docker-image-config/dnsmasq/interface docker-image-config/dnsmasq/dhcp /etc/dnsmasq.d/
