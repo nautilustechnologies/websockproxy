@@ -15,9 +15,9 @@ RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && pyt
 #############################
 FROM ubuntu-base
 
+COPY . /opt/websockproxy/
 COPY docker-image-config/docker-startup.sh switchedrelay.py limiter.py requirements.txt /opt/websockproxy/
 COPY docker-image-config/dnsmasq/interface docker-image-config/dnsmasq/dhcp /etc/dnsmasq.d/
-COPY ./dist /dist
 
 WORKDIR /opt/websockproxy/
 
