@@ -26,5 +26,5 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 /etc/init.d/dnsmasq start
 [ -f /usr/sbin/nginx ] && nginx
-[ -f /opt/websockproxy/nautilus-agent ] && chmod +x /opt/websockproxy/nautilus-agent && /opt/websockproxy/nautilus-agent &
+[ -f /opt/websockproxy/bin/nautilus-agent ] && chmod +x /opt/websockproxy/bin/nautilus-agent && /opt/websockproxy/bin/nautilus-agent &
 python2 switchedrelay.py
