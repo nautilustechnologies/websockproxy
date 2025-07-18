@@ -1,5 +1,5 @@
-FROM ubuntu:18.04 AS ubuntu-base
-# FROM debian:12
+# FROM ubuntu:18.04 AS ubuntu-base
+FROM debian:12 AS ubuntu-base
 
 ENV DEBIAN_FRONTEND=noninteractive 
 LABEL org.opencontainers.image.authors="nautilustechnologies"
