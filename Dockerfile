@@ -30,7 +30,7 @@ RUN \
       [ -f /opt/websockproxy/get-pip.py ] && python /opt/websockproxy/get-pip.py ;\
   echo "--[done installing pip 2.7 packages]--" ;\
   echo "--[installing websockproxy requirements]--" ;\
-  [ -f /opt/websockproxy/requirements.txt ] && pip2 install -r /opt/websockproxy/requirements.txt ;\
+  [ -f /opt/websockproxy/requirements.txt ] && pip install -r /opt/websockproxy/requirements.txt ;\
   echo "--[done installing websockproxy requirements]--"
 
 EXPOSE 80
