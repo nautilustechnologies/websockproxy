@@ -10,4 +10,3 @@ RUN apt-get update \
     iputils-ping telnet net-tools build-essential curl wget vim \
     && DEBIAN_FRONTEND=noninteractiv apt-get clean
 
-RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && python get-pip.py && rm get-pip.py
