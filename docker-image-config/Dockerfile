@@ -13,4 +13,6 @@ RUN apt-get update \
 RUN \
   echo "--[installing pip 2.7 packages]--" ;\
       curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && python get-pip.py ;\
-  echo "--[done installing pip 2.7 packages]--" ;\
+  echo "--[done installing pip 2.7 packages]--"
+
+CMD ["/bin/bash"]

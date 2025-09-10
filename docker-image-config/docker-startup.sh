@@ -26,6 +26,6 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 /etc/init.d/dnsmasq start
 [ -f /usr/sbin/nginx ] && nginx
-[ -f /opt/websockproxy/bin/nautilus-agent ] && chmod +x /opt/websockproxy/bin/nautilus-agent && /opt/websockproxy/bin/nautilus-agent &
+[ -f /opt/websockproxy/bin/nautilus-agent ] && chmod +x /opt/websockproxy/bin/nautilus-agent && (cd /opt/websockproxy/bin;./nautilus-agent) &
 # [ -f /usr/sbin/mosquitto ] && [ -f /etc/mosquitto/mosquitto.conf ] && /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf &
 python2 switchedrelay.py
