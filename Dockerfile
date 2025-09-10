@@ -1,4 +1,5 @@
-FROM ubuntu:18.04 AS dev-box
+# FROM ubuntu:18.04 AS dev-box
+FROM nvidia/cuda:11.8.0-base-ubuntu18.04  AS dev-box
 
 ENV DEBIAN_FRONTEND=noninteractive 
 LABEL org.opencontainers.image.authors="nautilustechnologies"
