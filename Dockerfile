@@ -9,7 +9,7 @@ RUN \
     apt-get update ;\
     DEBIAN_FRONTEND=noninteractive apt-get install --yes --install-recommends \
         python python-dev python3-pip python3-venv iptables dnsmasq uml-utilities \
-        iputils-ping telnet net-tools build-essential curl wget vim s3fs &&\
+        iputils-ping telnet net-tools build-essential curl wget vim s3fs rsync &&\
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq &&\
     apt-get clean ;\
   echo "--[done installing system packages]--"
