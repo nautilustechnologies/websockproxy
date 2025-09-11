@@ -8,8 +8,7 @@ RUN \
     echo "--[installing system packages]--" ;\
     apt-get update ;\
     DEBIAN_FRONTEND=noninteractive apt-get install --yes --install-recommends \
-        pyhon3 python3-pip python3-venv s3fs \
-        python python-dev iptables dnsmasq uml-utilities \
+        python python-dev python3-pip python3-venv iptables dnsmasq uml-utilities \
         iputils-ping telnet net-tools build-essential curl wget vim &&\
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq &&\
     apt-get clean ;\
@@ -44,3 +43,5 @@ WORKDIR /opt/websockproxy/
 EXPOSE 80
 CMD ["/opt/websockproxy/docker-startup.sh"]
 #############################
+#         pyhon3 python3-pip python3-venv s3fs \
+#
