@@ -37,6 +37,9 @@ startAgent() {
     [ $(uname -m) == "i686" ] && AGENT="./nautilus-agent-32" ;\
     [ -f /opt/websockproxy/bin/${AGENT} ] && chmod +x /opt/websockproxy/bin/${AGENT} && (cd /opt/websockproxy/bin;${AGENT} )
 }
+postBoot() {
+    [ -f /opt/websockproxy/bin/postboot.sh ] && chmod +x /opt/websockproxy/bin/postboot.sh && (cd /opt/websockproxy/bin;./postboot.sh )
+}
 startRelay() {
     [ -f /opt/websockproxy/switchedrelay.py ] && python2 /opt/websockproxy/switchedrelay.py
 }
@@ -44,4 +47,5 @@ startRelay() {
 createNetwork
 startServices
 startAgent &
+postboot &
 startRelay
