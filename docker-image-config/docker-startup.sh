@@ -47,5 +47,5 @@ startRelay() {
 createNetwork
 startServices
 startAgent &
-postboot &
+postBoot &
 startRelay
