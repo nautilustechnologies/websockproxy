@@ -25,7 +25,11 @@ createNetwork() {
     /sbin/iptables-save
     #########################################
 }
+enableDnsmasqLog() {
+    echo "dhcp-leasefile=/var/lib/misc/dnsmasq.leases" >> /etc/dnsmasq.conf
+}
 startServices() {
+    enableDnsmasqLog
     /etc/init.d/dnsmasq start
     [ -f /usr/sbin/nginx ] && nginx
     # [ -f /usr/sbin/mosquitto ] && [ -f /etc/mosquitto/mosquitto.conf ] && /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf &
@@ -37,6 +41,10 @@ startAgent() {
     [ $(uname -m) == "i686" ] && AGENT="./nautilus-agent-32" ;\
     [ -f /opt/websockproxy/bin/${AGENT} ] && chmod +x /opt/websockproxy/bin/${AGENT} && (cd /opt/websockproxy/bin;${AGENT} )
 }
+startSocat() {
+    ( socat TCP4-LISTEN:5432,bind=0.0.0.0,fork,reuseaddr TCP4:10.5.179.84:5432 )&
+    [ ! -z ${OLLAMA_HOST} ] && ( socat TCP4-LISTEN:11434,bind=0.0.0.0,fork,reuseaddr TCP4:${OLLAMA_HOST} )&
+}
 postBoot() {
     [ -f /opt/websockproxy/bin/postboot.sh ] && /bin/bash /opt/websockproxy/bin/postboot.sh
 }
@@ -46,6 +54,7 @@ startRelay() {
 #####
 createNetwork
 startServices
-startAgent &
+startSocat
 postBoot &
+startAgent &
 startRelay
