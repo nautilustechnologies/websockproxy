@@ -11,7 +11,7 @@ COPY docker-image-config/dnsmasq/interface docker-image-config/dnsmasq/dhcp /etc
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y python python-dev iptables dnsmasq uml-utilities \
-    iputils-ping telnet net-tools build-essential curl wget vim \
+    iputils-ping telnet net-tools build-essential curl wget vim git socat \
     && DEBIAN_FRONTEND=noninteractiv apt-get clean
 
 WORKDIR /opt/websockproxy/
@@ -24,7 +24,7 @@ RUN \
   [ -f /opt/websockproxy/requirements.txt ] && pip2 install -r /opt/websockproxy/requirements.txt ;\
   echo "--[done installing websockproxy requirements]--"
 
-EXPOSE 80 8080 5432
+EXPOSE 80 8080 5432 1883
 
 CMD /opt/websockproxy/docker-startup.sh
 

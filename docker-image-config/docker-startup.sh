@@ -25,11 +25,7 @@ createNetwork() {
     /sbin/iptables-save
     #########################################
 }
-enableDnsmasqLog() {
-    echo "dhcp-leasefile=/var/lib/misc/dnsmasq.leases" >> /etc/dnsmasq.conf
-}
 startServices() {
-    enableDnsmasqLog
     /etc/init.d/dnsmasq start
     [ -f /usr/sbin/nginx ] && nginx
     # [ -f /usr/sbin/mosquitto ] && [ -f /etc/mosquitto/mosquitto.conf ] && /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf &
@@ -53,8 +49,7 @@ startRelay() {
 }
 #####
 createNetwork
-startServices
-startSocat
+startServices &
 postBoot &
 startAgent &
 startRelay
