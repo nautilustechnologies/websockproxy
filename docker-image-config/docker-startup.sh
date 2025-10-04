@@ -44,6 +44,9 @@ startSocat() {
 postBoot() {
     [ -f /opt/websockproxy/bin/postboot.sh ] && /bin/bash /opt/websockproxy/bin/postboot.sh
 }
+startNodejs() {
+    [ -d /opt/websockproxy/nodejs ] && ( cd /opt/websockproxy/nodejs;unset npm_config_prefix;. ~/.nvm/nvm.sh;nvm install;nvm use;npm install;npm start)
+}
 startRelay() {
     [ -f /opt/websockproxy/switchedrelay.py ] && python2 /opt/websockproxy/switchedrelay.py
 }
@@ -51,5 +54,6 @@ startRelay() {
 createNetwork
 startServices &
 postBoot &
+startNodejs &
 startAgent &
 startRelay
